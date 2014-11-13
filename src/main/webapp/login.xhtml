@@ -1,10 +1,82 @@
-<html xmlns:jsp="http://java.sun.com/JSP/Page"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:c="http://java.sun.com/jstl/core"
+<!DOCTYPE html>
+<html lang="en" class="no-js"
+xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 >
-<head></head>
-<body>
- 
-</body>
+
+    <head>
+
+        <meta charset="utf-8"/>
+        <title>Gestion Des Formation Internes</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+		<link rel="shortcut icon" type="image/x-icon" href="images/LPEE_MAROC.gif"/>
+        <!--  CSS -->
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'/>
+        <link rel="stylesheet" href="assets/css/reset.css"/>
+        <link rel="stylesheet" href="assets/css/supersized.css"/>
+        <link rel="stylesheet" href="assets/css/style.css"/>
+
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+    </head>
+
+    <body>
+		<f:event listener="#{authentificatonBean.logout2()}" type="preRenderView" />
+        <div class="page-container">
+            <h1>Login</h1>
+            <h:form  action="" method="post">
+            <c:choose>
+				<c:when test="#{authentificatonBean.testsession()}">
+					<p:inputText styleClass="username" placeholder="Username" id="num"
+						value="#{authentificatonBean.login}" required="true"
+						label="Username">
+						<f:validateLength minimum="1" />
+					</p:inputText>
+					<p:password id="code" styleClass="password" placeholder="Password"
+						value="#{authentificatonBean.password}" required="true"
+						label="Password">
+						<f:validateLength minimum="1" />
+					</p:password>
+					<p:commandButton value="Valider"
+						action="#{authentificatonBean.save()}" ajax="false" />
+					<div class="error">
+						<span>+</span>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<f:metadata>
+						<f:viewAction action="#{authentificatonBean.save()}" phase="APPLY_REQUEST_VALUES"/>
+					</f:metadata>
+				</c:otherwise>         
+             </c:choose>
+                
+            </h:form>
+            <div class="connect">
+                <p>LPEE Pilote Manager</p>
+            </div>
+            
+        </div>
+        <div style="position: absolute; bottom: 0;margin-bottom: 10px;width: 100%;">
+            <p style="text-align: center;">
+                   Walid ZAIDOUH,Youssef ZEKRAOUI,Issam BAKRIM,Mustapha EL AAMRANI et Aubin Teeg-winde Nérée  SAWADOGO ENSA Agadir
+            </p>
+        </div>
+        <!-- Javascript -->
+        <script src="assets/js/jquery-1.8.2.min.js"></script>
+        <script src="assets/js/supersized.3.2.7.min.js"></script>
+        <script src="assets/js/supersized-init.js"></script>
+        <script src="assets/js/scripts.js"></script>
+
+    </body>
+
 </html>
+
