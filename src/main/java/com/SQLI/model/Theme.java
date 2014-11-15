@@ -1,6 +1,6 @@
 package com.sqli.model;
 
-// Generated 13 nov. 2014 19:47:35 by Hibernate Tools 3.4.0.CR1
+// Generated 15 nov. 2014 14:53:03 by Hibernate Tools 3.4.0.CR1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

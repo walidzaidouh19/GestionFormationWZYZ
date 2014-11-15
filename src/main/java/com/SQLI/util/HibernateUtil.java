@@ -1,6 +1,7 @@
 package com.sqli.util;
 import com.sqli.model.*;
 import org.hibernate.Session;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
@@ -13,6 +14,10 @@ public class HibernateUtil {
 
 	public static Configuration getInitializedConfiguration() {
 		AnnotationConfiguration config = new AnnotationConfiguration();
+		config.addAnnotatedClass(Personnel.class);
+		config.addAnnotatedClass(SessionF.class);
+		config.addAnnotatedClass(ResponsableFormation.class);
+		config.addAnnotatedClass(Adminstrateur.class);
 		config.addAnnotatedClass(Action.class);
 		config.addAnnotatedClass(Assiste.class);
 		config.addAnnotatedClass(AssisteId.class);
@@ -23,12 +28,12 @@ public class HibernateUtil {
 		config.addAnnotatedClass(EvaluationChaud.class);
 		config.addAnnotatedClass(EvaluationFroid.class);
 		config.addAnnotatedClass(Formateur.class);
+		config.addAnnotatedClass(Formation.class);
 		config.addAnnotatedClass(Objectif.class);
 		config.addAnnotatedClass(Profil.class);
 		config.addAnnotatedClass(Reponse.class);
-		config.addAnnotatedClass(Question.class);
 		config.addAnnotatedClass(ReponseId.class);
-		config.addAnnotatedClass(Session.class);
+		config.addAnnotatedClass(Question.class);
 		config.addAnnotatedClass(Theme.class);
 
 

@@ -1,6 +1,6 @@
 package com.sqli.model;
 
-// Generated 13 nov. 2014 19:47:35 by Hibernate Tools 3.4.0.CR1
+// Generated 15 nov. 2014 14:53:03 by Hibernate Tools 3.4.0.CR1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,7 +22,7 @@ public class Question implements java.io.Serializable {
 
 	private Integer idQuestion;
 	private String intitule;
-	private Set reponses = new HashSet(0);
+	private Set<Reponse> reponses = new HashSet<Reponse>(0);
 
 	public Question() {
 	}
@@ -31,7 +31,7 @@ public class Question implements java.io.Serializable {
 		this.intitule = intitule;
 	}
 
-	public Question(String intitule, Set reponses) {
+	public Question(String intitule, Set<Reponse> reponses) {
 		this.intitule = intitule;
 		this.reponses = reponses;
 	}
@@ -57,11 +57,11 @@ public class Question implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "question")
-	public Set getReponses() {
+	public Set<Reponse> getReponses() {
 		return this.reponses;
 	}
 
-	public void setReponses(Set reponses) {
+	public void setReponses(Set<Reponse> reponses) {
 		this.reponses = reponses;
 	}
 

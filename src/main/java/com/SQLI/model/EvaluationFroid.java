@@ -1,6 +1,6 @@
 package com.sqli.model;
 
-// Generated 13 nov. 2014 19:47:35 by Hibernate Tools 3.4.0.CR1
+// Generated 15 nov. 2014 14:53:03 by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -34,7 +34,7 @@ public class EvaluationFroid implements java.io.Serializable {
 	private String complementFormation;
 	private String commentaireCollaborateur;
 	private Date date;
-	private Set objectifs = new HashSet(0);
+	private Set<Objectif> objectifs = new HashSet<Objectif>(0);
 
 	public EvaluationFroid() {
 	}
@@ -56,7 +56,7 @@ public class EvaluationFroid implements java.io.Serializable {
 	public EvaluationFroid(Evaluation evaluation, String periode,
 			boolean applicabiliteFormatiom, String raisonApplicabilite,
 			boolean efficaciteCourtterme, String complementFormation,
-			String commentaireCollaborateur, Date date, Set objectifs) {
+			String commentaireCollaborateur, Date date, Set<Objectif> objectifs) {
 		this.evaluation = evaluation;
 		this.periode = periode;
 		this.applicabiliteFormatiom = applicabiliteFormatiom;
@@ -154,11 +154,11 @@ public class EvaluationFroid implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "evaluationFroid")
-	public Set getObjectifs() {
+	public Set<Objectif> getObjectifs() {
 		return this.objectifs;
 	}
 
-	public void setObjectifs(Set objectifs) {
+	public void setObjectifs(Set<Objectif> objectifs) {
 		this.objectifs = objectifs;
 	}
 

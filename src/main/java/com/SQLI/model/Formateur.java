@@ -1,16 +1,13 @@
 package com.sqli.model;
 
-// Generated 13 nov. 2014 19:47:35 by Hibernate Tools 3.4.0.CR1
+// Generated 15 nov. 2014 14:53:03 by Hibernate Tools 3.4.0.CR1
 
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -20,109 +17,35 @@ import javax.persistence.Table;
 @Table(name = "formateur", catalog = "gestionformation")
 public class Formateur implements java.io.Serializable {
 
-	private Integer idFormateur;
-	private String nom;
-	private String prenom;
-	private String adrFormateur;
-	private String site;
-	private String diplome;
-	private Set comptes = new HashSet(0);
-	private Set sessions = new HashSet(0);
+	private String matricule;
+	private Personnel personnel;
 
 	public Formateur() {
 	}
 
-	public Formateur(String nom, String prenom, String adrFormateur,
-			String diplome) {
-		this.nom = nom;
-		this.prenom = prenom;
-		this.adrFormateur = adrFormateur;
-		this.diplome = diplome;
-	}
-
-	public Formateur(String nom, String prenom, String adrFormateur,
-			String site, String diplome, Set comptes, Set sessions) {
-		this.nom = nom;
-		this.prenom = prenom;
-		this.adrFormateur = adrFormateur;
-		this.site = site;
-		this.diplome = diplome;
-		this.comptes = comptes;
-		this.sessions = sessions;
+	public Formateur(String matricule, Personnel personnel) {
+		this.matricule = matricule;
+		this.personnel = personnel;
 	}
 
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "id_formateur", unique = true, nullable = false)
-	public Integer getIdFormateur() {
-		return this.idFormateur;
+	@Column(name = "matricule", nullable = false, length = 50)
+	public String getMatricule() {
+		return this.matricule;
 	}
 
-	public void setIdFormateur(Integer idFormateur) {
-		this.idFormateur = idFormateur;
+	public void setMatricule(String matricule) {
+		this.matricule = matricule;
 	}
 
-	@Column(name = "nom", nullable = false)
-	public String getNom() {
-		return this.nom;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "matricule", nullable = false, insertable = false, updatable = false)
+	public Personnel getPersonnel() {
+		return this.personnel;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	@Column(name = "prenom", nullable = false)
-	public String getPrenom() {
-		return this.prenom;
-	}
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-
-	@Column(name = "adr_formateur", nullable = false, length = 512)
-	public String getAdrFormateur() {
-		return this.adrFormateur;
-	}
-
-	public void setAdrFormateur(String adrFormateur) {
-		this.adrFormateur = adrFormateur;
-	}
-
-	@Column(name = "site", length = 512)
-	public String getSite() {
-		return this.site;
-	}
-
-	public void setSite(String site) {
-		this.site = site;
-	}
-
-	@Column(name = "diplome", nullable = false)
-	public String getDiplome() {
-		return this.diplome;
-	}
-
-	public void setDiplome(String diplome) {
-		this.diplome = diplome;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "formateur")
-	public Set getComptes() {
-		return this.comptes;
-	}
-
-	public void setComptes(Set comptes) {
-		this.comptes = comptes;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "formateur")
-	public Set getSessions() {
-		return this.sessions;
-	}
-
-	public void setSessions(Set sessions) {
-		this.sessions = sessions;
+	public void setPersonnel(Personnel personnel) {
+		this.personnel = personnel;
 	}
 
 }

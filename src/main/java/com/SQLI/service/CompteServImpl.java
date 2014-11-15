@@ -1,154 +1,68 @@
 package com.sqli.service;
 
+
+
 import java.io.Serializable;
 import java.util.List;
 
-import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.sqli.service.CompteServInt;
-import com.sqli.model.Collaborateur;
+import com.sqli.dao.CompteDaoInt;
 import com.sqli.model.Compte;
-import com.sqli.util.HibernateUtil;
+import com.sqli.model.Personnel;
+
+/**
+ * @author WALID
+ *
+ */
+public class CompteServImpl implements CompteServInt, Serializable{
+
+	private CompteDaoInt dao;
 
 
-@Service("CompteServInt")
-@Transactional
-public class CompteServImpl implements CompteServInt,Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	public CompteServImpl(){
-		System.err.println("Instanciation de compteServ");
+	@Override
+	public void addCompte(Compte compte, Personnel p) {
+	dao.addCompte(compte, p);
 	}
 
-	public void addCompte(Compte compte, Collaborateur p){
-		System.err.println("appel de addCompte");
-		System.err.println("CIN :" + compte.getCollaborateur()+"login :"+compte.getLogin()+"Mot De passe :"+compte.getPassword());
-		Session ses = HibernateUtil.getSession();
-		compte.setCollaborateur(p);
-		try {
-		ses.beginTransaction();
-		ses.save(compte);
-		ses.getTransaction().commit();
-		//ses.close();
-		System.out.print("bien ajouté");
-		} catch (Exception e) {
-			System.out.print("erreur insertion" + e.getMessage());
-		}
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<Compte> listCompte(){
-		List<Compte> l =null;
-		Session ses = HibernateUtil.getSession();
-		try {
-		ses.beginTransaction();
-		l= ses.createQuery("from Compte").list(); 
-		for (Compte compte : l) {
-			System.out.println(compte.getLogin()+"  "+compte.getLogin()+"  "+compte.getPassword()+"  ");
-		}
-		ses.getTransaction().commit();
-		//ses.close();
-	} catch (Exception e) {
-		System.out.print("erreur suppression " + e.getMessage());
-		ses.beginTransaction().rollback();
-		return l;
-	}
-	return l;
-}
-
-	// @Override
+	@Override
 	public void updateCompte(Compte compte) {
-
-		Session session = HibernateUtil.getSession();
-		try {
-			session.beginTransaction();
-			session.update(compte);
-			session.getTransaction().commit();
-			//session.close();
-			System.out.print("bien ajouté");
-		} catch (Exception e) {
-			System.out.print("erreur insertion" + e.getMessage());
-		}
+		dao.updateCompte(compte);
+		
 	}
 
-	// @Override
+	@Override
 	public void deletcompte(Compte compte) {
-		Session session = HibernateUtil.getSession();
-		try {
-			session.beginTransaction();
-			session.delete(compte);
-			session.getTransaction().commit();
-			//session.close();
-		} catch (Exception e) {
-			System.out.print("erreur suppression" + e.getMessage());
-			session.beginTransaction().rollback();
-		}
+	dao.deletcompte(compte);
+		
 	}
 
-	// @Override
+	@Override
 	public Compte getCompte(Integer id) {
+		return dao.getCompte(id);
+	}
 
-		Compte compte= null;
-		Session session = HibernateUtil.getSession();
-		try {
-			session.beginTransaction();
-			compte = (Compte) session.get(Compte.class, id);
-			session.getTransaction().commit();
-			//session.close();
-		} catch (Exception e) {
-			System.out.print("erreur suppression" + e.getMessage());
-			session.beginTransaction().rollback();
-			return compte;
-		}
-		return compte;
+	@Override
+	public List<Compte> listCompte() {
+	return dao.listCompte();
 	}
-	
-	public Compte getCompteS(String id) {
-		Compte compte= null;
-		List<Compte> listobject=null;
-	
-		Session session = HibernateUtil.getSession();
-		try {
-			System.out.println( " /////////// hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh////////"+id);
-			session.beginTransaction();
-		//	compte = (Compte) session.get(Compte.class, id);
-			listobject=listCompte();
-			for (Compte cmt : listobject ) {
-				if(cmt.getLogin().equals(id)){
-					System.out.println( "  compte de password "+cmt.getPassword());
-					compte=cmt;
-					
-				}
-				
-			}
-			
-			
-		} catch (Exception e) {
-			System.out.print("erreur suppression" + e.getMessage());
-			session.beginTransaction().rollback();
-			return compte;
-		}
-		return compte;
+
+	@Override
+	public Compte getCompteS(String login) {
+	return dao.getCompteS(login);
 	}
+	@Override
 	public Compte getCompteO(Object object) {
-		Compte compte= null;
-		Session session = HibernateUtil.getSession();
-		try {
-			session.beginTransaction();
-			compte = (Compte) session.get(Compte.class, (Serializable) object);
-			session.getTransaction().commit();
-			//session.close();
-		} catch (Exception e) {
-			System.out.print("erreur suppression" + e.getMessage());
-			session.beginTransaction().rollback();
-			return compte;
-		}
-		return compte;
+	return dao.getCompteO(object);
 	}
+
+	public CompteDaoInt getDao() {
+		return dao;
+	}
+
+	public void setDao(CompteDaoInt dao) {
+		this.dao = dao;
+	}
+
 }

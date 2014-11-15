@@ -1,128 +1,190 @@
-@font-face {
-    font-family: 'CandaraRegular';
-    src: url('../fonts/candara-webfont.eot');
-    src: url('../fonts/candara-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/candara-webfont.woff') format('woff'),
-         url('../fonts/candara-webfont.ttf') format('truetype'),
-         url('../fonts/candara-webfont.svg#CandaraRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
 
-}
-body{
-	background:url(../images/background.png) repeat #ccc;
-	font-family:'CandaraRegular';
-}
-input{
-	border:0;
-	outline:0;
-	text-align:center;
-	color:#999999;
-	margin-bottom:10px;
-}
-#box{
-	background:url(../images/shape.png) no-repeat center;
-	margin:150px auto 0 auto;
-	width:360px;
-	height:264px;
-}
-.elements{
-	width:222px;
-	margin:0 auto;
-	padding:10px 0;
-}
-.avatar{
-	background:url(../images/avatar.gif) no-repeat center;
-	height:65px;
-	margin-bottom:15px;
-}
-.username{
-	background:url(../images/usermamefield.gif) no-repeat top;
-	width:222px;
-	height:32px;
-}
-.username:focus{
-	background:url(../images/usermamefield.gif) no-repeat bottom;
-	color:#333333;
-}
-.password{
-	background:url(../images/passwordfield.gif) no-repeat top;
-	width:222px;
-	height:32px;
-	text-align:center;
-}
-.password:focus{
-	background:url(../images/passwordfield.gif) no-repeat bottom;
-	color:#333333;
-}
-.forget{
-	font-size:12px;
-	margin-bottom:20px;
-}
-.forget a{
-	color:#999999;
-	text-decoration:none;
-}
-.checkbox {
-    display: block;
-    width: 40px;
-    height: 15px;
-    overflow: hidden;
-    border-radius: 5px;
-	float:left;
-	margin:5px 0 0 0;5
-}	
-input[type=checkbox] {
-    display: none;
-}
-input[type=checkbox] + label {
-    text-indent: -9999px;
-    display: block;
-    width: 40px;
-    height: 15px;
-    line-height: 15px;
-    background: transparent url(../images/checkboxfield.png) no-repeat;
-    -webkit-transition: background-position 0.3s ease-in-out;
-    -moz-transition: background-position 0.3s ease-in-out;
-}
-input[type=checkbox]:checked + label {
-    -webkit-transition: background-position 0.3s ease-in-out;
-    -moz-transition: background-position 0.3s ease-in-out;
-    background-position:-26px;
-}
-.remember{
-	font-size:12px;
-	color:#999999;
-	margin:5px;
-	float:left;
-}
-.clr{
-	clear:both;
-}
-.submit{
-	float:right;
-	background:#cccccc;
-	width:60px;
-	height:23px;
-	border-radius:5px;
-	border-bottom:2px solid #bcbcbc;
-	cursor:pointer;
-	color:#fff;
-}
-.submit:hover{
-	text-shadow:0 1px rgba(0,0,0,0.1);
-}
-.submit:active{
-	text-shadow:0 -1px rgba(0,0,0,0.2);
-}
-.signup{
-	text-align:center;
-	font-size:12px;
-	color:#999;
-	margin:5px 0 0 0;
-}
-.signup a{
-	color:#72985a;
-	text-decoration:none;
+.StepTitle {
+  display: block;
+  position: relative;
+  margin: 0;
+  border: 1px solid #E0E0E0;
+  padding: 5px;
+  font: bold 16px Verdana, Arial, Helvetica, sans-serif;
+  color: #5A5655;
+  background-color: #E0E0E0;
+  clear: both;
+  text-align: left;
+  z-index: 88;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
 }
 
+
+/* panel */
+
+ .h3.panel-title {
+font-size: 20px;
+font-weight: 400;
+}
+  /*	Panels @cascade, @info, @success, @danger, @warning
+---------------------------------------------------------------------------------------------- */
+.panel > .panel-heading {
+  border-bottom: 1px solid #b9c4d5;
+}
+.panel > .panel-heading a {
+  padding: 3px;
+  color: #495b79;
+  font-size: 14px;
+}
+.panel > .panel-heading a:hover {
+  text-decoration: none;
+}
+.panel > .panel-heading .code .dropdown-menu {
+  margin-top: 8px;
+}
+.panel > .panel-heading .code .dropdown-menu li:last-child {
+  border-bottom: 0px;
+}
+.panel > .panel-heading .code .dropdown-menu li:first-child {
+  border-top: 0px;
+}
+.panel > .panel-heading .nav-tabs a {
+  font-size: 16px;
+  padding: 4px 10px;
+}
+.panel > .panel-heading .nav-tabs {
+  border-bottom: 0px;
+}
+.panel > .panel-heading .nav-tabs > li.active > a,
+.panel > .panel-heading .nav-tabs > li.active > a:hover,
+.panel > .panel-heading .nav-tabs > li.active > a:focus {
+  color: #555555;
+  cursor: default;
+  background-color: #ffffff;
+  border: 1px solid #b9c4d5;
+  border-top: 2px solid #495b79;
+  border-bottom-color: transparent;
+}
+.panel > .panel-heading .dropdown-menu > .active > a,
+.panel > .panel-heading .dropdown-menu > .active > a:hover,
+.panel > .panel-heading .dropdown-menu > .active > a:focus {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #495b79;
+  outline: 0 !important;
+}
+.panel > .panel-heading .panel-icon {
+  margin-right: 5px;
+}
+.panel > .panel-body.nopadding {
+  padding: 0px;
+}
+.panel > .panel-body.nopadding table {
+  margin-bottom: 0px;
+}
+/* Panel Cascade */
+.panel-cascade {
+  border: 0px solid #e9ecef;
+  background-color: none;
+}
+.panel-cascade > .panel-heading {
+  color: #495b79;
+  background-color: none;
+  border: 0px solid #dadfe4;
+}
+.panel-cascade > .panel-heading a {
+  color: #495b79;
+}
+.panel-cascade > .panel-heading a.dropdown-toggle {
+  float: left;
+}
+.panel-cascade > .panel-heading a.dropdown-toggle .dropdown-menu {
+  padding: 0px;
+  right: 0;
+  left: auto;
+}
+.panel-cascade > .panel-body {
+  border: 1px solid #b9c4d5;
+  border-radius: 4px;
+}
+/* Panel Info */
+.panel-info {
+  border-color: #54b5df;
+  background-color: #ffffff;
+}
+.panel-info > .panel-heading {
+  color: #d5edf7;
+  background-color: #54b5df;
+  border-bottom: 2px solid #7fc8e7;
+}
+.panel-info > .panel-heading a {
+  color: #d5edf7;
+}
+/*	Panel Success */
+.panel-success {
+  border: 1px solid #90c657;
+  background-color: #ffffff;
+}
+.panel-success > .panel-heading {
+  color: #dbedc9;
+  background-color: #90c657;
+  border-bottom: 2px solid #a9d37d;
+}
+.panel-success > .panel-heading a {
+  color: #dbedc9;
+}
+/*	Panel Danger */
+.panel-danger {
+  border: 1px solid #e45857;
+  background-color: #ffffff;
+}
+.panel-danger > .panel-heading {
+  color: #ffffff;
+  background-color: #e45857;
+  border-bottom: 2px solid #eb8483;
+}
+.panel-danger > .panel-heading a {
+  color: #ffffff;
+}
+/*	Panel Warning */
+.panel-warning {
+  border: 1px solid #d9dfe7;
+  background-color: #ffffff;
+}
+.panel-warning > .panel-heading {
+  color: #feefde;
+  background-color: #f9a94a;
+  border-bottom: 2px solid #fbc07b;
+}
+.panel-warning > .panel-heading a {
+  color: #feefde;
+}
+/*	Advanced Icons 
+---------------------------------------------------------------------------------------------- */
+.cascade-icon {
+  padding: 10px;
+  border-radius: 4px;
+}
+.cascade-icon-circle {
+  padding: 10px;
+  border-radius: 50%;
+}
+.hidden-minibar.hide {
+  display: none !important;
+}
+
+
+.breadcrumb {
+  padding: 8px 15px;
+  margin-bottom: 20px;
+  list-style: none;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+.breadcrumb > li {
+  display: inline-block;
+}
+.breadcrumb > li + li:before {
+  padding: 0 5px;
+  color: #ccc;
+  content: "/\00a0";
+}
+.breadcrumb > .active {
+  color: #999;
+}

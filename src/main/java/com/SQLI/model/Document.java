@@ -1,6 +1,6 @@
 package com.sqli.model;
 
-// Generated 13 nov. 2014 19:47:35 by Hibernate Tools 3.4.0.CR1
+// Generated 15 nov. 2014 14:53:03 by Hibernate Tools 3.4.0.CR1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,14 +20,14 @@ import javax.persistence.Table;
 public class Document implements java.io.Serializable {
 
 	private Integer idDoc;
-	private Session session;
+	private SessionF sessionF;
 	private String fichierPath;
 
 	public Document() {
 	}
 
-	public Document(Session session, String fichierPath) {
-		this.session = session;
+	public Document(SessionF sessionF, String fichierPath) {
+		this.sessionF = sessionF;
 		this.fichierPath = fichierPath;
 	}
 
@@ -44,12 +44,12 @@ public class Document implements java.io.Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "code_session", nullable = false)
-	public Session getSession() {
-		return this.session;
+	public SessionF getSessionF() {
+		return this.sessionF;
 	}
 
-	public void setSession(Session session) {
-		this.session = session;
+	public void setSessionF(SessionF sessionF) {
+		this.sessionF = sessionF;
 	}
 
 	@Column(name = "fichier_path", nullable = false, length = 512)

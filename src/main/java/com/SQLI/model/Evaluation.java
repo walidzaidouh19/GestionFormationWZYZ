@@ -1,6 +1,6 @@
 package com.sqli.model;
 
-// Generated 13 nov. 2014 19:47:35 by Hibernate Tools 3.4.0.CR1
+// Generated 15 nov. 2014 14:53:03 by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -26,25 +26,24 @@ import javax.persistence.TemporalType;
 public class Evaluation implements java.io.Serializable {
 
 	private Integer refEvaluation;
-	private Collaborateur collaborateur;
+	private Personnel personnel;
 	private int indice;
 	private Date dateApplication;
-	private Set evaluationChauds = new HashSet(0);
-	private Set evaluationFroids = new HashSet(0);
+	private Set<EvaluationChaud> evaluationChauds = new HashSet<EvaluationChaud>(0);
+	private Set<EvaluationFroid> evaluationFroids = new HashSet<EvaluationFroid>(0);
 
 	public Evaluation() {
 	}
 
-	public Evaluation(Collaborateur collaborateur, int indice,
-			Date dateApplication) {
-		this.collaborateur = collaborateur;
+	public Evaluation(Personnel personnel, int indice, Date dateApplication) {
+		this.personnel = personnel;
 		this.indice = indice;
 		this.dateApplication = dateApplication;
 	}
 
-	public Evaluation(Collaborateur collaborateur, int indice,
-			Date dateApplication, Set evaluationChauds, Set evaluationFroids) {
-		this.collaborateur = collaborateur;
+	public Evaluation(Personnel personnel, int indice, Date dateApplication,
+			Set<EvaluationChaud> evaluationChauds, Set<EvaluationFroid> evaluationFroids) {
+		this.personnel = personnel;
 		this.indice = indice;
 		this.dateApplication = dateApplication;
 		this.evaluationChauds = evaluationChauds;
@@ -63,13 +62,13 @@ public class Evaluation implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_collaborateur", nullable = false)
-	public Collaborateur getCollaborateur() {
-		return this.collaborateur;
+	@JoinColumn(name = "matricule", nullable = false)
+	public Personnel getPersonnel() {
+		return this.personnel;
 	}
 
-	public void setCollaborateur(Collaborateur collaborateur) {
-		this.collaborateur = collaborateur;
+	public void setPersonnel(Personnel personnel) {
+		this.personnel = personnel;
 	}
 
 	@Column(name = "indice", nullable = false)
@@ -92,20 +91,20 @@ public class Evaluation implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "evaluation")
-	public Set getEvaluationChauds() {
+	public Set<EvaluationChaud> getEvaluationChauds() {
 		return this.evaluationChauds;
 	}
 
-	public void setEvaluationChauds(Set evaluationChauds) {
+	public void setEvaluationChauds(Set<EvaluationChaud> evaluationChauds) {
 		this.evaluationChauds = evaluationChauds;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "evaluation")
-	public Set getEvaluationFroids() {
+	public Set<EvaluationFroid> getEvaluationFroids() {
 		return this.evaluationFroids;
 	}
 
-	public void setEvaluationFroids(Set evaluationFroids) {
+	public void setEvaluationFroids(Set<EvaluationFroid> evaluationFroids) {
 		this.evaluationFroids = evaluationFroids;
 	}
 

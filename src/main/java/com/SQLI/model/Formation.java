@@ -1,6 +1,6 @@
 package com.sqli.model;
 
-// Generated 13 nov. 2014 19:47:35 by Hibernate Tools 3.4.0.CR1
+// Generated 15 nov. 2014 14:53:03 by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -30,8 +30,8 @@ public class Formation implements java.io.Serializable {
 	private Date dateButoire;
 	private boolean realise;
 	private int idTheme;
-	private Set objectifs = new HashSet(0);
-	private Set sessions = new HashSet(0);
+	private Set<SessionF> sessionFs = new HashSet<SessionF>(0);
+	private Set<Objectif> objectifs = new HashSet<Objectif>(0);
 
 	public Formation() {
 	}
@@ -47,16 +47,16 @@ public class Formation implements java.io.Serializable {
 	}
 
 	public Formation(String intitule, int duree, Date datePrevuRealisation,
-			Date dateButoire, boolean realise, int idTheme, Set objectifs,
-			Set sessions) {
+			Date dateButoire, boolean realise, int idTheme, Set<SessionF> sessionFs,
+			Set<Objectif> objectifs) {
 		this.intitule = intitule;
 		this.duree = duree;
 		this.datePrevuRealisation = datePrevuRealisation;
 		this.dateButoire = dateButoire;
 		this.realise = realise;
 		this.idTheme = idTheme;
+		this.sessionFs = sessionFs;
 		this.objectifs = objectifs;
-		this.sessions = sessions;
 	}
 
 	@Id
@@ -127,21 +127,21 @@ public class Formation implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "formation")
-	public Set getObjectifs() {
-		return this.objectifs;
+	public Set<SessionF> getSessionFs() {
+		return this.sessionFs;
 	}
 
-	public void setObjectifs(Set objectifs) {
-		this.objectifs = objectifs;
+	public void setSessionFs(Set<SessionF> sessionFs) {
+		this.sessionFs = sessionFs;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "formation")
-	public Set getSessions() {
-		return this.sessions;
+	public Set<Objectif> getObjectifs() {
+		return this.objectifs;
 	}
 
-	public void setSessions(Set sessions) {
-		this.sessions = sessions;
+	public void setObjectifs(Set<Objectif> objectifs) {
+		this.objectifs = objectifs;
 	}
 
 }

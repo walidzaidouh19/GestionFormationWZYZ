@@ -1,6 +1,6 @@
 package com.sqli.model;
 
-// Generated 13 nov. 2014 19:47:35 by Hibernate Tools 3.4.0.CR1
+// Generated 15 nov. 2014 15:31:12 by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -31,7 +31,7 @@ public class EvaluationChaud implements java.io.Serializable {
 	private String suggestion;
 	private Date date;
 	private int idEvaluation;
-	private Set reponses = new HashSet(0);
+	private Set<Reponse> reponses = new HashSet<Reponse>(0);
 
 	public EvaluationChaud() {
 	}
@@ -46,7 +46,7 @@ public class EvaluationChaud implements java.io.Serializable {
 	}
 
 	public EvaluationChaud(Evaluation evaluation, String commentaire,
-			String suggestion, Date date, int idEvaluation, Set reponses) {
+			String suggestion, Date date, int idEvaluation, Set<Reponse> reponses) {
 		this.evaluation = evaluation;
 		this.commentaire = commentaire;
 		this.suggestion = suggestion;
@@ -76,7 +76,7 @@ public class EvaluationChaud implements java.io.Serializable {
 		this.evaluation = evaluation;
 	}
 
-	@Column(name = "commentaire", nullable = false, length = 65535)
+	@Column(name = "commentaire", nullable = false, length = 256)
 	public String getCommentaire() {
 		return this.commentaire;
 	}
@@ -85,7 +85,7 @@ public class EvaluationChaud implements java.io.Serializable {
 		this.commentaire = commentaire;
 	}
 
-	@Column(name = "suggestion", nullable = false, length = 65535)
+	@Column(name = "suggestion", nullable = false, length = 256)
 	public String getSuggestion() {
 		return this.suggestion;
 	}
@@ -114,11 +114,11 @@ public class EvaluationChaud implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "evaluationChaud")
-	public Set getReponses() {
+	public Set<Reponse> getReponses() {
 		return this.reponses;
 	}
 
-	public void setReponses(Set reponses) {
+	public void setReponses(Set<Reponse> reponses) {
 		this.reponses = reponses;
 	}
 
